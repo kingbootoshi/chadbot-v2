@@ -9,7 +9,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
   const { speak, log } = useActions();
   const lastProcess = useSoulMemory("lastProcess", "core");
   const newUserAction = useSoulMemory<string>("newUserAction", "...");
-  const loadedRAG = useSoulMemory<string>("loadedRAG", "Empty knowledgebase");
+  const loadedRAG = useSoulMemory<string>("loadedRAG", "## Ordinals Knowledge Base");
   const shortTermChatLogs = useSoulMemory<string[]>("shortTermChatLogs", []);
   const shortTermHistoryString = shortTermChatLogs.current.map((item, index) => `${index + 1}. ${item}`).join("\n\n");
   lastProcess.current = "core";
@@ -45,35 +45,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
     ]
   });
 
-  //Chadbot thinks about updating his memory
-  const [thinksAbtRag, thinksRag] = await internalMonologue(
-    masterMemory, 
-    indentNicely`
-    If the user's new input is a question, THINK if you have sufficient knowledge to confidently answer the user's question.
-
-    If you can answer the question based on your existing knowledge, THINK: "I think I have the necessary information to answer this question without updating my memory because my knowledgebase states..."
-
-    If you don't have enough information to answer the question, THINK: "I think I need to update my memory to answer to the user's question, because my knowledgebase says nothing about..."
-
-    If the user's input is not a question (e.g., a greeting or a statement), then you don't need to update your memory. In this case, THINK: "I think I don't need to update my memory because the user did not ask a question."
-
-    IMPORTANT: EXPLICITLY THINK IN FIRST PERSON TO ANALYZE THE CURRENT SCENARIO. START YOUR SENTENCE BY STATING: "I think... X because..."
-
-    (Back your thoughts with a reason why you thought that.)
-
-    IMPORTANT: ANALYZE YOUR "## Ordinals Knowledge Base-" MEMORY SLOT! IF THE ANSWER TO THE USERS QUESTON IS THERE YOU DO NOT NEED TO UPDATE YOUR MEMORY!
-    `, { model: "fast" });
-
-  log("Chadbot thinks if he can answer the current question with 100% accuracy...", thinksRag);
-
-  const [, needsRag] = await mentalQuery(thinksAbtRag, "The user has asked a question that Chadbot can't answer with his current memories.", { model: "fast" })
-
-  log("Chadbot needs to update his memory:", needsRag);
-
-  if (needsRag) {
-    log("Chadbot is updating his memory...");
-    masterMemory = await withRagContext(masterMemory)
-  }
+  masterMemory = await withRagContext(masterMemory)
 
   const [withDialog, dialog] = await externalDialog(
     masterMemory,
