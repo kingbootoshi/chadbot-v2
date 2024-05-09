@@ -15,3 +15,6 @@ Example:
 WHAT ARE RUNES?
 Runes are a scam created by a furry
 ```
+
+To update the database and push the files in backgroundInformation into the soul server, run
+```npm run pipeline```
