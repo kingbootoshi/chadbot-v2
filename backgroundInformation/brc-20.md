@@ -13,6 +13,37 @@ BRC-20 tokens utilize Ordinals inscriptions of JSON (JavaScript Object Notation)
 
 The BRC-20 token standard is new and the process of deploying, minting, and transferring BRC-20 tokens isn't user-friendly. There are also a limited number of tooling and supporting services.
 
+Terminology:
+  Bitcoin NFT    -->    inscription / ordinal
+  Token    -->    brc-20 
+
+BRC-20 advantages
+  Fungible: can be easily traded on exchanges
+  Secure: built on BTC
+  Compatible: integrated into the BTC ecosystem
+
+  Binance has recently listed several BRC-20 tokens, including $ORDI, $SATS, and $RATS. Many traders are getting bullish on inscriptions
+
+How to mint BRC-20 tokens?
+  1.Go to Unisat
+  2.Click on BRC-20
+  3.Search for the ticker
+  4.Click on "Mint directly" (only if token not minted out yet)
+  5.Enter the amount you want to mint
+  6.Unisat will ask you to sign transaction, here is what to do next:
+  7.Paste your taproot wallet (to which you want the inscription to come)
+  8.Choose the network fee you want to pay
+  9.Submit & Pay Invoice
+
+  To choose the right network fee go to mempool, check current medium fee and set the fee which 10% greater to ensure that your transaction will be confirmed
+
+How to list BRC-20?
+  Go to your Unisat profile
+  Chose token you want to list
+  Set price & Sign Transaction
+
+  Note: After listing you won't be able to set a higher price. To delist you'll need to inscribe tokens again and pay gas fee
+
 Differences Between BRC-20 and ERC-20 Tokens
 Despite the similarity in their names, there are significant differences between the two tokens.
 
