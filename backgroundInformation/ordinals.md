@@ -1,0 +1,1 @@
+Ordinals are a numbering scheme for satoshis that allows tracking and transferring individual sats. These numbers are called ordinal numbers. Satoshis are numbered in the order in which they're mined, and transferred. Learn more: https://docs.ordinals.com/overview.html

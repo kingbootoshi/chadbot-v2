@@ -49,7 +49,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
 
   const [withDialog, dialog] = await externalDialog(
     masterMemory,
-    "Interact with the user",
+    "Answer the user's question. IF adding links to your answer, ONLY use links explicitly found in the knowledge base. DO NOT make up any links or include links from outside the knowledge base!!!",
     { model: "fast" }
   );
   speak(dialog);

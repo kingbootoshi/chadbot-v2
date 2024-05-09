@@ -1,4 +1,10 @@
-[SPECIAL SATS]
+SPECIAL SATS
+
+What are the sat rarities? What are rare sats?
+Bitcoin has periodic events, some frequent, some more uncommon, and these naturally lend themselves to a system of rarity depending on the time the satoshis were mined.
+
+Learn more: https://twitter.com/const_quary/status/1674040726777151488?s=20
+
 Special sats, “rare sats”, exotic sats, are all sats with a specified attribute due to its history with the block, or timeline, or event. Here is some info about the specific details of current known satribute categories:
 
 Satributes: 
@@ -23,24 +29,19 @@ List of Sats:
 
 - Pizza Palindromes: These are palindrome sats associated with the first documented purchase with Bitcoin—10,000 BTC for two pizzas. The total supply of these sats is roughly 3 million.
 
+- Vintage Sats: These sats are from the first 1,000 block range, dating from January 04, 2009, to January 19, 2009. The total supply of these sats is 100 billion.
+- Vintage Palindromes: These are palindrome sats from the first 1,000 block range, dating from January 04, 2009, to January 19, 2009. The total supply of these sats is roughly 6 million.
 
-Vintage Sats: These sats are from the first 1,000 block range, dating from January 04, 2009, to January 19, 2009. The total supply of these sats is 100 billion.
-Vintage Palindromes: These are palindrome sats from the first 1,000 block range, dating from January 04, 2009, to January 19, 2009. The total supply of these sats is roughly 6 million.
+- Block 9 Sats: These are the oldest sats in circulation. The total supply of these sats is 5 billion.
+- Block 9 Palindromes: These are palindrome sats from the oldest block in circulation. The total supply of these sats is roughly 1,100, making them the rarest historical sat you can find.
 
+- Block 78 Sats: These are the first block mined by someone other than Satoshi, mined by Hal Finney. The total supply of these sats is 5 billion.
 
-Block 9 Sats: These are the oldest sats in circulation. The total supply of these sats is 5 billion.
-Block 9 Palindromes: These are palindrome sats from the oldest block in circulation. The total supply of these sats is roughly 1,100, making them the rarest historical sat you can find.
+- Block 78 Palindromes: These are palindrome sats from the first block mined by someone other than Satoshi, mined by Hal Finney. The total supply of these sats is roughly 1,100.
 
+-First Transaction Sats: These sats were transferred from Satoshi to Hal Finney on January 12, 2009, in block 170. The total supply of these sats is 1 billion.
 
-Block 78 Sats: These are the first block mined by someone other than Satoshi, mined by Hal Finney. The total supply of these sats is 5 billion.
-Block 78 Palindromes: These are palindrome sats from the first block mined by someone other than Satoshi, mined by Hal Finney. The total supply of these sats is roughly 1,100.
-
-
-First Transaction Sats: These sats were transferred from Satoshi to Hal Finney on January 12, 2009, in block 170. The total supply of these sats is 1 billion.
-
-
-Block 286 Palindromes: These are palindrome sats from block 286. The total supply of these sats is also roughly 1,100.
-
+- Block 286 Palindromes: These are palindrome sats from block 286. The total supply of these sats is also roughly 1,100.
 
 SPECIAL SATS HUNTING/HUNTING FOR SATS/SAT HUNTING
 There are sites such as Saturn (https://twitter.com/Saturn_btc) that allow you to input your BTC address and scan your wallet for special sats.

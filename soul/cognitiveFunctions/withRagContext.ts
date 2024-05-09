@@ -1,13 +1,12 @@
 import { ChatMessageRoleEnum, WorkingMemory, createCognitiveStep, indentNicely, useActions, useBlueprintStore, z, useSoulMemory } from "@opensouls/engine"
 import brainstorm from "../cognitiveSteps/brainstorm.js"
 
-const MAX_QA_MEMORY_LENGTH = 700
-
 const withRagContext = async (workingMemory: WorkingMemory) => {
   const name = workingMemory.soulName
   const { log } = useActions()
   const { search } = useBlueprintStore("default")
   const loadedRAG = useSoulMemory<string>("loadedRAG", "Empty knowledgebase");
+  const newUserAction = useSoulMemory<string>("newUserAction", "...");
 
   //Creating a sub-agent that answers RAG questions
   let ragMemoryAgent = new WorkingMemory({
@@ -21,31 +20,37 @@ const withRagContext = async (workingMemory: WorkingMemory) => {
   const [, questions] = await brainstorm(
     ragMemoryAgent,
     indentNicely`
-      Given the user's question, brainstorm 2 relevant sub-questions to ask your knowledgebase in order to answer the question.
-      Have one of the questions be the user's question directly
+      Given the user's question, brainstorm 3 relevant queries to search the knowledgebase.
+      Have one of the brainstorms be the user's question directly
   
-      Consider the key topics and concepts mentioned in the question, and generate sub-questions that explore those areas in more depth.
+      Consider the key topics and concepts mentioned in the question, and generate queries to best find similar information from the vector search.
   
       For example:
       - If the user asks "What are Runes?", ${name} might brainstorm:
+        1. "Runes"
         1. "What are Runes?"
         2. "How buy Runes?"
   
       - If the user asks "How do I get started with Ordinals?", ${name} might brainstorm:
+        1. "Ordinals"
         1. "How do I get started with Ordinals?"
         2. "What is the Ordinal's Quickstart Guide?"
+
+      - The user may sometimes ask about key terms in ordinals, ex. about recursion, reinscription, parent-child and other terms
+        1. "Recursion"
+        2. "What is recursion?"
   
-      Based on the user's question, brainstorm three relevant sub-questions that will help ${name} provide a thorough and helpful response.
+      Based on the user's question, brainstorm three relevant queries that will help ${name} find relevant information.
     `,
   );
 
+  questions.unshift(newUserAction.current);
+  questions.pop();
   log("Brainstormed results", questions)
-
-  const blankAnsweringMemory = workingMemory.slice(0, 1)
 
   const questionAnswers = await Promise.all(questions.map(async (question) => {
     log("search for ", question)
-    const vectorResults = await search(question, { minSimilarity: 0.7 })
+    const vectorResults = await search(question, { minSimilarity: 0.6 })
     log("found", vectorResults.length, "entries")
   
     if (vectorResults.length === 0) {
@@ -107,9 +112,7 @@ const cleanedQuestionAnswers = Object.entries(uniqueAnswers).map(([answer, quest
   let newMemory = {
     role: ChatMessageRoleEnum.Assistant,
     content: indentNicely`
-        ## Ordinals Knowledge Base (KB)
-
-        !! REMEMBER: ADD LINKS FROM THE KB TO YOUR ANSWER
+        ## Ordinals Knowledge Base
         
         ${cleanedQuestionAnswers.map(({ question, answer }) => indentNicely`
           ### VECTOR DB QUERY: "${question}"
