@@ -1,20 +1,22 @@
 
-import { MentalProcess, useActions, useSoulMemory, WorkingMemory, ChatMessageRoleEnum, indentNicely } from "@opensouls/engine";
+import { MentalProcess, useActions, useSoulMemory, WorkingMemory, ChatMessageRoleEnum, useProcessManager } from "@opensouls/engine";
 import externalDialog from "./cognitiveSteps/externalDialog.js";
-import mentalQuery from "./cognitiveSteps/mentalQuery.js";
-import internalMonologue from "./cognitiveSteps/internalMonologue.js";
 import withRagContext from "./cognitiveFunctions/withRagContext.js";
 
 const core: MentalProcess = async ({ workingMemory }) => {
   const { speak, log } = useActions();
   const lastProcess = useSoulMemory("lastProcess", "core");
   const newUserAction = useSoulMemory<string>("newUserAction", "...");
+  const { invocationCount } = useProcessManager()
   const loadedRAG = useSoulMemory<string>("loadedRAG", "## Ordinals Knowledge Base");
 
   lastProcess.current = "core";
 
-  // SETTING UP WORKING MEMORY TEMPLATE FOR EASY MANIPULATION
+  if (invocationCount === 0){
+    speak("Hey! It seems to be our first time speaking. Ask me any Bitcoin/Ordinals related question and I'll do my best to asnwer it. My knowledgebase is open sourced, you can view & add to it here: https://github.com/kingbootoshi/chadbot-v2.")
+  }
 
+  // SETTING UP WORKING MEMORY TEMPLATE FOR EASY MANIPULATION
   //RAG Memory
   let ragMemory = {
     role: ChatMessageRoleEnum.Assistant, 

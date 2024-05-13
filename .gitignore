@@ -1,5 +1,3 @@
 stores
 node_modules
 .env
-fly.toml
-Dockerfile

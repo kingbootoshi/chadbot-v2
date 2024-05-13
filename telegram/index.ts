@@ -4,6 +4,7 @@ import { Context, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
 const souls: Record<string, Soul> = {};
+const lastMessageTimestamps: Record<number, number> = {};
 
 async function connectToTelegram() {
   const telegraf = new Telegraf<Context>(process.env.TELEGRAM_TOKEN!);
@@ -46,6 +47,20 @@ async function setupTelegramSoulBridge(telegram: Telegraf<Context>, telegramChat
 async function connectToSoulEngine(telegram: Telegraf<Context>) {
   telegram.on(message("text"), async (ctx) => {
     const telegramChatId = ctx.message.chat.id;
+    const currentTimestamp = Date.now();
+
+    if (lastMessageTimestamps[telegramChatId]) {
+      const timeSinceLastMessage = currentTimestamp - lastMessageTimestamps[telegramChatId];
+      const remainingTime = Math.ceil((10000 - timeSinceLastMessage) / 1000);
+
+      if (timeSinceLastMessage < 10000) {
+        await ctx.reply(`Please wait ${remainingTime} seconds before sending another message!`);
+        return;
+      }
+    }
+
+    lastMessageTimestamps[telegramChatId] = currentTimestamp;
+
     const soul = await setupTelegramSoulBridge(telegram, ctx.message.chat.id);
 
     soul.dispatch({
