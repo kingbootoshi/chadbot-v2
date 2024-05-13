@@ -13,7 +13,7 @@ const withRagContext = async (workingMemory: WorkingMemory) => {
     soulName: "Chadbot",
     memories: [
       workingMemory.memories[0],
-      workingMemory.memories[3] // Using user's new action memory to help answer the question
+      workingMemory.memories[2] // Using user's new action memory to help answer the question
     ]
   })
 
@@ -63,13 +63,16 @@ const withRagContext = async (workingMemory: WorkingMemory) => {
     const memoriesToUseForAnswers: string[] = []
   
     if (vectorResults.length > 0) {
-      const bestResult = vectorResults.reduce((prev, current) => 
-        (prev.similarity > current.similarity) ? prev : current
-      );
-      memoriesToUseForAnswers.push(bestResult.content?.toString() || "");
+      const topResults = vectorResults
+        .sort((a, b) => b.similarity - a.similarity)
+        .slice(0, 3);
+
+      topResults.forEach(result => {
+        memoriesToUseForAnswers.push(result.content?.toString() || "");
+      });
     }
   
-    vectorResults.forEach((result, index) => {
+    vectorResults.slice(0, 3).forEach((result, index) => {
       log(`Entry ${index + 1}: similarity ${result.similarity}`);
     });
   
@@ -112,10 +115,12 @@ const cleanedQuestionAnswers = Object.entries(uniqueAnswers).map(([answer, quest
   let newMemory = {
     role: ChatMessageRoleEnum.Assistant,
     content: indentNicely`
-        ## Ordinals Knowledge Base
+        # Ordinals Knowledge Base 
+        IMPORTANT!!! : THE USER CANNOT SEE THIS INFORMATION. USE THIS TO ANSWER THEIR QUESTION
+        IMPORTANT!!! : IF THERE ARE LINKS ASSOCIATED WITH THE ANSWER, ADD ALL LINKS
         
         ${cleanedQuestionAnswers.map(({ question, answer }) => indentNicely`
-          ### VECTOR DB QUERY: "${question}"
+          ## VECTOR DB QUERY: "${question}"
           ${answer}
         `).join("\n\n")}
       `

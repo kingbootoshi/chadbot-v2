@@ -8,11 +8,11 @@ To buy, sell, & trade runes, you can use the common user combo of Xverse as a wa
 
 HOW TO BUY RUNES
 To buy runes,
-0. Install Xverse (https://www.xverse.app/) and load up the Bitcoin receive addy with bitcoin
-1. go to the specific page of the rune you wish to buy (example: https://magiceden.io/runes/WANKO%E2%80%A2MANKO%E2%80%A2RUNES). 
-2. On the page, there is a "buy" tab. You can select the UTXO batches (grouped listings basically) of the quantity & amount you want to buy! 
-3. Pick the proper fee rate by paying attention to mempool.space (https://mempool.space/)
-4. For visual instructions, you can follow this short guide by Jen to buy runes off ME! (https://x.com/JENFTEACH/status/1783534459205423181)
+1. Install Xverse (https://www.xverse.app/) and load up the Bitcoin receive addy with bitcoin
+2. go to the specific page of the rune you wish to buy (example: https://magiceden.io/runes/WANKO%E2%80%A2MANKO%E2%80%A2RUNES). 
+3. On the page, there is a "buy" tab. You can select the UTXO batches (grouped listings basically) of the quantity & amount you want to buy! 
+4. Pick the proper fee rate by paying attention to mempool.space (https://mempool.space/)
+5. For visual instructions, you can follow this short guide by Jen to buy runes off ME! (https://x.com/JENFTEACH/status/1783534459205423181)
 
 HOW TO SELL RUNES
 To sell runes,
@@ -24,3 +24,5 @@ To sell runes,
 HOW TO MINT RUNES
 1. To mint runes, you can use https://runeblaster.io/ to mint & speed up TXNs via RBF. 
 2. Refer to this twitter thread to hit your mints and not lose money on gas!: https://x.com/KingBootoshi/status/1782175464850960514
+
+For a more technical explanation of how runes works as a protocol, read the rune docs here: https://docs.ordinals.com/runes.html

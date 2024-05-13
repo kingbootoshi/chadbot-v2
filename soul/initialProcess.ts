@@ -10,8 +10,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
   const lastProcess = useSoulMemory("lastProcess", "core");
   const newUserAction = useSoulMemory<string>("newUserAction", "...");
   const loadedRAG = useSoulMemory<string>("loadedRAG", "## Ordinals Knowledge Base");
-  const shortTermChatLogs = useSoulMemory<string[]>("shortTermChatLogs", []);
-  const shortTermHistoryString = shortTermChatLogs.current.map((item, index) => `${index + 1}. ${item}`).join("\n\n");
+
   lastProcess.current = "core";
 
   // SETTING UP WORKING MEMORY TEMPLATE FOR EASY MANIPULATION
@@ -22,16 +21,10 @@ const core: MentalProcess = async ({ workingMemory }) => {
     content: `${loadedRAG.current}`,
   };
 
-  //Short Term Chat Memory
-  let shortTermMemory = {
-    role: ChatMessageRoleEnum.Assistant, 
-    content: `## SHORT TERM CHAT LOGS\n\n${shortTermHistoryString}`,
-  };
-
   // User's New Action Memory
   let usersNewActionMemory = {
     role: ChatMessageRoleEnum.Assistant, 
-    content: `## USER'S NEW ACTION\n${newUserAction.current}`,
+    content: `# USER'S QUESTION\n${newUserAction.current}`,
   };
 
   //THE CORE, MASTER TEMPLATE OF CHADBOT'S WORKING MEMORY
@@ -40,8 +33,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
     memories: [
       workingMemory.memories[0], //[0] IS THE BASE PROMPT FROM CHADBOT.MD
       ragMemory, // [1] IS CHADBOT'S KNOWLEDGE BASE
-      shortTermMemory, //[2] IS THE SHORT TERM CHAT LOGS
-      usersNewActionMemory //[3] IS THE USERS'S NEW ACTION
+      usersNewActionMemory //[2] IS THE USERS'S NEW ACTION
     ]
   });
 
@@ -49,14 +41,10 @@ const core: MentalProcess = async ({ workingMemory }) => {
 
   const [withDialog, dialog] = await externalDialog(
     masterMemory,
-    "Answer the user's question. IF adding links to your answer, ONLY use links explicitly found in the knowledge base. DO NOT make up any links or include links from outside the knowledge base!!!",
+    "Interact with the user",
     { model: "fast" }
   );
   speak(dialog);
-
-  //PUSH CONVO TO SHORT TERM HISTORY
-  //Pushing the player's current action & GM's narrative to the short term memory
-  shortTermChatLogs.current.push(`//USER INTERACTION\n${newUserAction.current}\n\n//CHADBOT REPLIED:\n${dialog}`);
 
   return masterMemory;
 }

@@ -15,16 +15,11 @@ const externalDialog = createCognitiveStep((instructions: string | { instruction
         role: ChatMessageRoleEnum.System,
         name: name,
         content: indentNicely`
-            Model the mind of ${name}.
-    
-            ## Instructions
-            * DO NOT include actions (for example, do NOT add non-verbal items like *John Smiles* or *John Nods*, etc).
-            * DO NOT include internal thoughts (for example, do NOT respond with John thought: "...").
-            * If necessary, use all CAPS to emphasize certain words.
-    
-            ${instructionString}
-    
-            Please reply with the next utterance from ${name}. Use the format: '${name} ${verb}: "..."'
+        Provide a concise yet comprehensive answer to the user's question, focusing on the most relevant information. 
+        If the knowledge base contains step-by-step instructions or important details, include the complete information.
+        Make sure to include all the associated links from the knowledge base in your response. Format the links as markdown hyperlinks with a brief description of each link.
+        Do not invent or include external links that are not present in the knowledge base.
+        Aim for a balance between brevity and necessary detail to best address the user's query.
           `
       };
     },
