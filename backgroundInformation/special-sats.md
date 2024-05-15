@@ -43,6 +43,45 @@ List of Sats:
 
 - Block 286 Palindromes: These are palindrome sats from block 286. The total supply of these sats is also roughly 1,100.
 
+- Rarity
+  Humans are collectors, and since satoshis can now be tracked and transferred, people will naturally want to collect them. Ordinal theorists can decide for themselves which sats are rare and desirable, but there are some hints…
+
+  Bitcoin has periodic events, some frequent, some more uncommon, and these naturally lend themselves to a system of rarity. These periodic events are:
+
+  Blocks: A new block is mined approximately every 10 minutes, from now until the end of time.
+
+  Difficulty adjustments: Every 2016 blocks, or approximately every two weeks, the Bitcoin network responds to changes in hashrate by adjusting the difficulty target which blocks must meet in order to be accepted.
+
+  Halvings: Every 210,000 blocks, or roughly every four years, the amount of new sats created in every block is cut in half.
+
+  Cycles: Every six halvings, something magical happens: the halving and the difficulty adjustment coincide. This is called a conjunction, and the time period between conjunctions a cycle. A conjunction occurs roughly every 24 years. The first conjunction should happen sometime in 2032.
+
+This gives us the following rarity levels:
+
+  common: Any sat that is not the first sat of its block
+  uncommon: The first sat of each block
+  rare: The first sat of each difficulty adjustment period
+  epic: The first sat of each halving epoch
+  legendary: The first sat of each cycle
+  mythic: The first sat of the genesis block
+
+- Rare Satoshi Supply
+Total Supply
+  common: 2.1 quadrillion
+  uncommon: 6,929,999
+  rare: 3437
+  epic: 32
+  legendary: 5
+  mythic: 1
+Current Supply
+  common: 1.9 quadrillion
+  uncommon: 808,262
+  rare: 369
+  epic: 3
+  legendary: 0
+  mythic: 1
+  At the moment, even uncommon satoshis are quite rare. As of this writing, 745,855 uncommon satoshis have been mined - one per 25.6 bitcoin in circulation.
+
 SPECIAL SATS HUNTING/HUNTING FOR SATS/SAT HUNTING
 There are sites such as Saturn (https://twitter.com/Saturn_btc) that allow you to input your BTC address and scan your wallet for special sats.
 
