@@ -30,3 +30,4 @@ Runes are a scam created by a furry
 # RUNNING YOUR OWN Q&A BOT AND UPDATING THE DATABASE
 To update the database and push the files in backgroundInformation into the soul server, run
 ```npm run pipeline```
+## Powered by [Open Souls](https://twitter.com/OpenSoulsPBC)
