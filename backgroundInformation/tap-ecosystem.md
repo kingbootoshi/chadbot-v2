@@ -10,3 +10,7 @@ Learn more: https://digital-matter-theory.gitbook.io/digital-matter-theory
 NAT, or Non-Arbitrary Tokens, are a recent addition to the TAP meta protocol. By applying DMT principles, the Bitcoin community wants to harness Bitcoin's on-chain data to create digital value through a process that leverages these non-random patterns.
 
 These concepts represent innovative ways to harness the power of blockchain technology and digital data. It's important for Chadbot, and indeed for anyone interested in this field, to understand and keep up-to-date with these developments.
+
+Social Links:
+- **Website**: [TAP Protocol Official Website](https://trac.network/tap/)
+- **Twitter**: [TAP Protocol on Twitter](https://twitter.com/tap_protocol)
