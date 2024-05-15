@@ -1,8 +1,10 @@
 # THE ORDINALS CHADBOT V2
 BACK AND BETTER THAN EVER MFERS
 
-![GCyCx6Ba8AAi9Yn](https://github.com/kingbootoshi/chadbot/assets/127834715/868af0e9-51c5-4d3b-b7fa-0137e9069106)
+CHAT ON TELEGRAM HERE: https://t.me/ordinalschad_bot
+INVITE TO YOUR DISCORD HERE: https://discord.com/oauth2/authorize?client_id=1133344551822688396
 
+![chadbotposter](https://github.com/kingbootoshi/chadbot-v2/assets/127834715/dc6f6cca-6d05-4c71-865b-9c67f38d888a)
 
 # TO ADD INFORMATION TO THE CHADBOT DB
 Navigate to the "backgroundInformation" folder and add markdown files ".md" to the folder.
