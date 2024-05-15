@@ -5,7 +5,7 @@ BACK AND BETTER THAN EVER MFERS
 *Send him a message to get started*
 
 [INVITE TO YOUR DISCORD](https://discord.com/oauth2/authorize?client_id=1133344551822688396)
-*Ping him and ask your question in the same message! "@Ordinals Chadbot what is RBF?"
+*Ping him and ask your question in the same message!* "@Ordinals Chadbot what is RBF?"
 
 ![chadbotposter](https://github.com/kingbootoshi/chadbot-v2/assets/127834715/dc6f6cca-6d05-4c71-865b-9c67f38d888a)
 
