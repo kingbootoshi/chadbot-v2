@@ -2,6 +2,7 @@
 BACK AND BETTER THAN EVER MFERS
 
 CHAT ON TELEGRAM HERE: https://t.me/ordinalschad_bot
+
 INVITE TO YOUR DISCORD HERE: https://discord.com/oauth2/authorize?client_id=1133344551822688396
 
 ![chadbotposter](https://github.com/kingbootoshi/chadbot-v2/assets/127834715/dc6f6cca-6d05-4c71-865b-9c67f38d888a)
