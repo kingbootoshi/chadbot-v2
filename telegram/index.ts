@@ -2,9 +2,44 @@ import { Soul } from "@opensouls/engine";
 import { config } from "dotenv";
 import { Context, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
+import * as fs from 'fs';
+import * as path from 'path';
 
 const souls: Record<string, Soul> = {};
 const lastMessageTimestamps: Record<number, number> = {};
+const lastUserMessages: Record<number, string> = {};
+const lastBotMessages: Record<number, string> = {};
+
+async function logFeedback(feedback: string, telegramChatId: number, feedbackType: "good" | "bad", userMessage: string, botMessage: string) {
+  const feedbackFilePath = path.join(__dirname, 'feedback.json');
+  let feedbackData: { timestamp: number, chatId: number, feedback: string, type: string, userMessage: string, botMessage: string }[] = [];
+
+  if (fs.existsSync(feedbackFilePath)) {
+    const fileContent = fs.readFileSync(feedbackFilePath, 'utf-8');
+    feedbackData = JSON.parse(fileContent);
+  }
+
+  feedbackData.push({
+    timestamp: Date.now(),
+    chatId: telegramChatId,
+    feedback,
+    type: feedbackType,
+    userMessage,
+    botMessage,
+  });
+
+  feedbackData.sort((a, b) => a.timestamp - b.timestamp);
+
+  fs.writeFileSync(feedbackFilePath, JSON.stringify(feedbackData, null, 2));
+}
+
+async function sendLogToChat(telegram: Telegraf<Context>, logMessage: string) {
+  const chatId = 1037589495;
+  if (logMessage.length > 4096) {
+    logMessage = logMessage.substring(0, 4093) + '...';
+  }
+  await telegram.telegram.sendMessage(chatId, logMessage);
+}
 
 async function connectToTelegram() {
   const telegraf = new Telegraf<Context>(process.env.TELEGRAM_TOKEN!);
@@ -33,8 +68,12 @@ async function setupTelegramSoulBridge(telegram: Telegraf<Context>, telegramChat
   console.log(`Connected to ${String(telegramChatId)}`)
 
   soul.on("says", async (event) => {
-    const content = await event.content();
+    let content = await event.content();
+    if (content.length > 4096) {
+      content = content.substring(0, 4093) + '...';
+    }
     await telegram.telegram.sendMessage(Number(telegramChatId), content);
+    lastBotMessages[telegramChatId] = content; // Store the last message sent by the bot
   });
 
   await soul.connect();
@@ -63,12 +102,27 @@ async function connectToSoulEngine(telegram: Telegraf<Context>) {
 
     const soul = await setupTelegramSoulBridge(telegram, ctx.message.chat.id);
 
-    soul.dispatch({
-      action: "said",
-      content: ctx.message.text,
-    });
+    const messageText = ctx.message.text;
 
-    await ctx.telegram.sendChatAction(telegramChatId, "typing");
+    if (messageText.includes("👍")) {
+      await ctx.reply("Good feedback logged! Thanks!");
+      const logMessage = `GOOD FEEDBACK RECEIVED!\nUser Question: ${lastUserMessages[telegramChatId]}\nChadbot Answer: ${lastBotMessages[telegramChatId]}`;
+      await sendLogToChat(telegram, logMessage);
+      await logFeedback(messageText, telegramChatId, "good", lastUserMessages[telegramChatId], lastBotMessages[telegramChatId]);
+    } else if (messageText.includes("👎")) {
+      await ctx.reply("Bad feedback logged! Thanks!");
+      const logMessage = `BAD FEEDBACK RECEIVED!\nUser Question: ${lastUserMessages[telegramChatId]}\nChadbot Answer: ${lastBotMessages[telegramChatId]}`;
+      await sendLogToChat(telegram, logMessage);
+      await logFeedback(messageText, telegramChatId, "bad", lastUserMessages[telegramChatId], lastBotMessages[telegramChatId]);
+    } else {
+      lastUserMessages[telegramChatId] = messageText; // Store the last message sent by the user
+      soul.dispatch({
+        action: "said",
+        content: messageText,
+      });
+    
+      await ctx.telegram.sendChatAction(telegramChatId, "typing");
+    }
   });
 }
 
