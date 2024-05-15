@@ -1,6 +1,19 @@
-[Ordinals Quickstart Guide]
+Ordinals Quickstart Guide
 Getting started with Ordinals/How to get started with Ordinals
+
 How do I get started with Ordinals? 
+
+To get started with Ordinals, you can quickly get set up by going through the following twitter posts:
+
+1. Getting Started with Ordinals Cheat Sheet: https://x.com/LeonidasNFT/status/1722344475597373851?s=20
+
+2. Ordinals Dictionary: https://x.com/goatedxyz/status/1698259057390575900
+
+3. People to follow in Ordinals: https://x.com/goatedxyz/status/1740513918668386755
+
+By checking out the 3 steps above, you can easily get started in the Ordinals ecosystem by viewing the main apps off the cheat sheet, learning words from the Ordinals dictionary, and following the people listed in that post to get yourself involved in the ecosystem!
+
+Now, following the below, we can get you started with a wallet:
 
 1. Get setup with an Ordinals wallet like Xverse
 
@@ -13,18 +26,6 @@ Xverse also has mobile support. Full video explaining Xverse wallet here: https:
 
 3. Connect your wallet to sites such as marketplaces (like https://magiceden.io/ for trading JPEGs ) to transact !
 
-Here is a post showing your quickstart cheat sheet https://x.com/LeonidasNFT/status/1722344475597373851?s=20
-
-View fee rates here: https://mempool.space/
-
-How to add funds from Centralised Exchanges to bitcoin wallets.?
-  Go to the "Receive" section of your chosen wallet.
-  Transfer Bitcoin (BTC) from a cryptocurrency exchange (CEX) to your wallet address.
-  Tip: If your CEX doesn't allow sending BTC directly to a Taproot address, consider sending it to a Nested SegWit address first and then moving the funds to your Taproot address.       
-
-[Getting started with Ordinals/How to get started with Ordinals, How do I get started with Ordinals? CONTINUED]
-!! IMPORTANT !! Tell users to be wary of fee rates too! Ensure they are sending the proper fee rate by viewing mempool.space (https://mempool.space/)
+Be wary of fee rates too! Ensure you are sending the proper fee rate by viewing mempool.space (https://mempool.space/)
 
 BE CAREFUL WHEN CONNECTING YOUR WALLET TO SITES. USE A BURNER WALLET WHEN INTERACTING WITH NEW DEGEN SITES.
-
-Ordinals should be sent/received to a TAPROOT address, these are addresses starting with (bc1p).

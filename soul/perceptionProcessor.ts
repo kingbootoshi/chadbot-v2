@@ -14,6 +14,8 @@ const perceptionProcessor: PerceptionProcessor = async ({ perception, workingMem
   let content = `${perception.content}`
 
   newUserAction.current = content
+
+  log("Perception received!", perception)
   }
  
   return [workingMemory, currentProcess]
