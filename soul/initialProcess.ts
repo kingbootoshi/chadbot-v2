@@ -55,6 +55,7 @@ const core: MentalProcess = async ({ workingMemory }) => {
     content: dialog,
     _metadata: {
       discordEvent,
+        
     },
   });
 

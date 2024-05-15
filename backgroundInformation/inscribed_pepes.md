@@ -1,0 +1,3 @@
+Inscribed Pepes
+What are Inscribed Pepes? Who are Inscribed Pepes?
+Inscribed Pepes (https://magiceden.io/ordinals/marketplace/inscribed-pepes) are a sub-3k collection of 69 pepes inscribed during the early days of Ordinals, led by the dank founders 0wl (https://twitter.com/0wl_btc) & WaveZ (https://twitter.com/WaveZ66). The team are revered as Ordinal OGs and are massive contributors to the early growth of Ordinals. They have additionally released a collection of 420 peepo (https://magiceden.io/ordinals/marketplace/lilpeepos) which sit in the sub-1k of the first uncommon sats inscribed on.
