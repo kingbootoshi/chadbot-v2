@@ -7,3 +7,7 @@ Embark on an unprecedented journey with the Ordinals collection from 0N1 FORCE,
 where participants will not only possess unique digital artifacts, but also wield the power to shape their own adventure within the universe. 
 This expansion of IP invites enthusiasts to become integral parts of the evolving saga, making every decision a pivotal moment in the rich tapestry of the 0N1 FORCE universe. 
 Join us as we redefine storytelling in the digital age and unleash boundless possibilities for creative expression and exploration.
+
+Links:-
+https://magiceden.io/ordinals/marketplace/on1force_the_f4llen
+https://twitter.com/0n1Force

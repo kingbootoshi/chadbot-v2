@@ -5,3 +5,7 @@ Beyond merely creating digital assets, "Honey Badgers" represents a bold experim
 Unlike traditional projects that adhere to rigid roadmaps, "Honey Badgers" embraces a more organic approach, 
 driven by a singular purpose: to provide enthusiasts with high-quality pixelated art while offering a dynamic space for social interaction and camaraderie. 
 The team behind "Honey Badgers" is committed to delivering an experience that goes beyond mere ownership of digital assets, aiming to cultivate a thriving community where members can engage, connect, and share their passion for Bitcoin and digital art.
+
+Links:-
+https://magiceden.io/ordinals/marketplace/honey_badgers
+https://twitter.com/HoneyBadgersBtc

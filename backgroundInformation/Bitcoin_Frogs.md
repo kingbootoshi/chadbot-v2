@@ -7,7 +7,9 @@ This project played a pivotal role in reintroducing many individuals to the foun
 
 Notably, Bitcoin Frogs stands as one of the pioneering projects within the realm of profile-picture (PFP) ordinals on the Bitcoin blockchain. Each frog is meticulously designed to be pixelated and kept under 5 kilobytes in size, a deliberate choice to accommodate the size-cost constraints inherent in Bitcoin's architecture. Given that each block on the Bitcoin blockchain is limited to 4 megabytes in size, the cost of inscription increases with file size. Every frog is inscribed onto a Satoshi, enabling its traceability through the innovative Ordinal Theory protocol.
 
-
+Links:-
+https://magiceden.io/ordinals/marketplace/bitcoin-frogs
+https://twitter.com/BitcoinFrogs
 
 
 

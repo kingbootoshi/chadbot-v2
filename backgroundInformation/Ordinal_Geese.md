@@ -7,3 +7,7 @@ As collectors flock to acquire these prized assets, the Ordinal Geese stand as a
 They embody the convergence of art and technology, offering a tangible representation of the boundless possibilities within the digital realm. 
 With each Goose representing a moment in time, a convergence of human ingenuity and digital innovation, the collection serves as a beacon for the future of digital ownership. 
 Whether displayed proudly in a digital gallery or tucked away in a virtual vault, the Ordinal Geese hold a special place within the hearts of collectors worldwide, forever immortalized on the Bitcoin blockchain.
+
+Links:-
+https://magiceden.io/ordinals/marketplace/ordinal_geese
+https://twitter.com/OrdinalGeese
