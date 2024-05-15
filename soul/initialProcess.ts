@@ -1,10 +1,13 @@
 
-import { MentalProcess, useActions, useSoulMemory, WorkingMemory, ChatMessageRoleEnum, useProcessManager } from "@opensouls/engine";
+import { MentalProcess, useActions, useSoulMemory, WorkingMemory, ChatMessageRoleEnum, useProcessManager, usePerceptions } from "@opensouls/engine";
 import externalDialog from "./cognitiveSteps/externalDialog.js";
 import withRagContext from "./cognitiveFunctions/withRagContext.js";
+import { getMetadataFromPerception, getUserDataFromDiscordEvent } from "./lib/utils/discord.js";
 
 const core: MentalProcess = async ({ workingMemory }) => {
-  const { speak, log } = useActions();
+  const { speak, log, dispatch } = useActions();
+  const { invokingPerception, pendingPerceptions } = usePerceptions();
+  const { userName, discordEvent } = getMetadataFromPerception(invokingPerception);
   const lastProcess = useSoulMemory("lastProcess", "core");
   const newUserAction = useSoulMemory<string>("newUserAction", "...");
   const { invocationCount } = useProcessManager()
@@ -46,7 +49,14 @@ const core: MentalProcess = async ({ workingMemory }) => {
     "Interact with the user",
     { model: "fast" }
   );
-  speak(dialog);
+  
+  dispatch({
+    action: "says",
+    content: dialog,
+    _metadata: {
+      discordEvent,
+    },
+  });
 
   return masterMemory;
 }
