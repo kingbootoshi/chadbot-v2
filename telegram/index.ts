@@ -126,10 +126,27 @@ async function connectToSoulEngine(telegram: Telegraf<Context>) {
   });
 }
 
+function disconnectInactiveSouls() {
+  const now = Date.now();
+  const inactivityLimit = 3 * 60 * 1000; // 3 minutes
+
+  for (const [chatId, soul] of Object.entries(souls)) {
+    const lastActivity = lastMessageTimestamps[Number(chatId)];
+    if (now - lastActivity > inactivityLimit) {
+      soul.disconnect();
+      delete souls[chatId];
+      console.log(`Disconnected soul for chat ID ${chatId} due to inactivity.`);
+    }
+  }
+}
+
 async function run() {
   config();
   const telegram = await connectToTelegram();
   connectToSoulEngine(telegram);
+
+  // Periodically check for inactive souls every minute
+  setInterval(disconnectInactiveSouls, 60 * 1000);
 }
 
 run();
