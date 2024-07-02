@@ -48,6 +48,8 @@ const withRagContext = async (workingMemory: WorkingMemory) => {
   questions.pop();
   log("Brainstormed results", questions)
 
+  const usedAnswers = new Set<string>();
+  
   const questionAnswers = await Promise.all(questions.map(async (question) => {
     log("search for ", question)
     const vectorResults = await search(question, { minSimilarity: 0.6 })
@@ -116,13 +118,18 @@ const cleanedQuestionAnswers = Object.entries(uniqueAnswers).map(([answer, quest
     role: ChatMessageRoleEnum.Assistant,
     content: indentNicely`
         # Ordinals Knowledge Base 
-        IMPORTANT!!! : THE USER CANNOT SEE THIS INFORMATION. USE THIS TO ANSWER THEIR QUESTION
-        IMPORTANT!!! : IF THERE ARE LINKS ASSOCIATED WITH THE ANSWER, ADD ALL LINKS
-        
+
         ${cleanedQuestionAnswers.map(({ question, answer }) => indentNicely`
-          ## VECTOR DB QUERY: "${question}"
+          ### VECTOR DATABASE RETRIEVAL OF QUERY: ${question}
           ${answer}
         `).join("\n\n")}
+
+        # IMPORTANT RULES !!! 
+        - IF THERE ARE LINKS ASSOCIATED WITH THE ANSWER, ADD ALL LINKS
+        - REMEMBER, THE FOLLOWING INFO IS NOT GURANTEED TO BE THE ANSWER. IT IS THE CLOSEST MATCH OF INFO TO THE USERS QUESTION BASED ON KEYWORDS.
+        - If asked about a topic not covered in the knowledgebase or your memory, clearly state that you do not have enough information to provide an answer.
+        - Avoid speculation or assumptions. Only provide information you are highly confident about based on the given context.
+        - If possible, provide detailed responses with associated links and sources to back up factual claims.
       `
   }
 

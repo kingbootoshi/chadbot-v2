@@ -15,6 +15,15 @@ const core: MentalProcess = async ({ workingMemory }) => {
 
   lastProcess.current = "core";
 
+  log("PERCEPTION IN INITIAL PROCESS RECEIVED", invokingPerception)
+
+  // Extract clientuserid from invokingPerception metadata
+   const clientUserId = invokingPerception?._metadata?.clientuserid;
+
+   if(clientUserId){
+   log("CLIENT USER ID", clientUserId)
+   }
+   
   if (invocationCount === 0){
     speak("Hey! It seems to be our first time speaking. Ask me any Bitcoin/Ordinals related question and I'll do my best to answer it. Users usually start by asking me 'How do I get started with Ordinals?' My knowledgebase is open sourced and is continuously being added to- you can view & add to it here: https://github.com/kingbootoshi/chadbot-v2")
   }
@@ -50,12 +59,13 @@ const core: MentalProcess = async ({ workingMemory }) => {
     { model: "fast" }
   );
   
+
   dispatch({
     action: "says",
     content: dialog,
     _metadata: {
       discordEvent,
-        
+      ...(clientUserId && { clientuserid: clientUserId }), // Include clientuserid if it exists
     },
   });
 
